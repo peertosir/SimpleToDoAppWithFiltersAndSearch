@@ -29,20 +29,20 @@ export default class ItemStatusFilter extends Component {
       <div className='btn-group'>
         <button
           className={styleClasses.all}
-          onClick={() => this.props.onFilterAll()}
+          onClick={() => this.props.onFilterChange(0)}
         >
           All
         </button>
         <button
           className={styleClasses.active}
-          onClick={() => this.props.onFilterActive()}
+          onClick={() => this.props.onFilterChange(2)}
         >
           Active
         </button>
         <button
           className={styleClasses.done}
           onClick={() => {
-            this.props.onFilterDone();
+            this.props.onFilterChange(1);
           }}
         >
           Done

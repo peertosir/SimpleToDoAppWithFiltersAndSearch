@@ -82,20 +82,8 @@ export default class App extends Component {
     this.filterData(this.props.filterState);
   };
 
-  onFilterDone = () => {
-    this.setState({ filterState: 1 }, () =>
-      this.filterData(this.props.filterState)
-    );
-  };
-
-  onFilterActive = () => {
-    this.setState({ filterState: 2 }, () =>
-      this.filterData(this.props.filterState)
-    );
-  };
-
-  onFilterAll = () => {
-    this.setState({ filterState: 0 }, () =>
+  onFilterChange = option => {
+    this.setState({ filterState: option }, () =>
       this.filterData(this.props.filterState)
     );
   };
@@ -121,9 +109,7 @@ export default class App extends Component {
         <div className='top-panel d-flex'>
           <SearchPanel onSearch={this.onSearch} />
           <ItemStatusFilter
-            onFilterActive={this.onFilterActive}
-            onFilterDone={this.onFilterDone}
-            onFilterAll={this.onFilterAll}
+            onFilterChange={this.onFilterChange}
             filterState={this.state.filterState}
           />
         </div>
