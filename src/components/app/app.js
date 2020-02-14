@@ -45,6 +45,15 @@ export default class App extends Component {
     });
   };
 
+  onSearch = textToSearch => {
+    this.setState(({ filteredData }) => {
+      const result = filteredData.filter(item =>
+        item.label.toLowerCase().includes(textToSearch.toLowerCase().trim())
+      );
+      return { filteredData: result };
+    });
+  };
+
   toggleProperty(arr, id, propName) {
     const indx = arr.findIndex(item => item.id === id);
     const editedElement = arr[indx];
@@ -110,7 +119,7 @@ export default class App extends Component {
       <div className='todo-app'>
         <AppHeader toDo={toDoCount} done={doneCount} />
         <div className='top-panel d-flex'>
-          <SearchPanel />
+          <SearchPanel onSearch={this.onSearch} />
           <ItemStatusFilter
             onFilterActive={this.onFilterActive}
             onFilterDone={this.onFilterDone}
